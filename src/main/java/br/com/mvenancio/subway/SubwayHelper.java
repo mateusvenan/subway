@@ -13,8 +13,12 @@ public class SubwayHelper {
 		}
 	}
 
-	public String getActualPosition() {
-		return null;
+	public static Subway getActualPosition(String commands) {
+		Subway subway = new Subway();
+		for (String command : commands.split("")) {
+			move(Command.valueOf(command), subway);
+		}
+		return subway;
 	}
 
 	static boolean isTurn(Command command) {
@@ -25,10 +29,32 @@ public class SubwayHelper {
 		rotateDirection(command, subway);
 		switch (command) {
 		case U:
+			subway.incrementZ();
 			break;
 		case D:
+			subway.decrementZ();
 			break;
 		case M:
+			moveXY(subway);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private static void moveXY(Subway subway) {
+		switch (subway.getDirection()) {
+		case NORTH:
+			subway.incrementY();
+			break;
+		case SOUTH:
+			subway.decrementY();
+			break;
+		case EAST:
+			subway.incrementX();
+			break;
+		case WEST:
+			subway.decrementX();
 			break;
 		default:
 			break;

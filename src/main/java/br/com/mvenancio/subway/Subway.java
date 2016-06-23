@@ -11,24 +11,36 @@ public class Subway {
 		return x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
 	public int getY() {
 		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public int getZ() {
 		return z;
 	}
 
-	public void setZ(int z) {
-		this.z = z;
+	public void incrementX() {
+		x++;
+	}
+
+	public void decrementX() {
+		x--;
+	}
+
+	public void incrementY() {
+		y++;
+	}
+
+	public void decrementY() {
+		y--;
+	}
+
+	public void incrementZ() {
+		z++;
+	}
+
+	public void decrementZ() {
+		z--;
 	}
 
 	public Direction getDirection() {
