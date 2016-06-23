@@ -1,60 +1,41 @@
 package br.com.mvenancio.subway;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Subway {
-	
+
 	private int x = 0;
 	private int y = 0;
 	private int z = 0;
 	private Direction direction = Direction.NORTH;
-	
 
-	Map<Integer, Direction> directions = new HashMap<>();
-
-	public Subway() {
-		for (Direction direction : Direction.values()) {
-			directions.put(direction.ordinal(), direction);
-		}
+	public int getX() {
+		return x;
 	}
 
-	public String getActualPosition() {
-
-		return null;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	private void move(int x, int y, int z, Command command) {
-		
-		switch (command) {
-		case U:
-			break;
-		case D:
-			break;
-		case M:
-			break;
-		default:
-			break;
-		}
+	public int getY() {
+		return y;
 	}
 
-	Direction rotateDirection(Command command, Direction direction) {
-		if (!isTurn(command)) {
-			return direction;
-		}
-		int index = direction.ordinal();
-		if (Command.R == command) {
-			index++;
-			index = index == 4 ? 0 : index;
-		} else {
-			index--;
-			index = index == -1 ? 3 : index;
-		}
-		return directions.get(index);
-
+	public void setY(int y) {
+		this.y = y;
 	}
 
-	boolean isTurn(Command command) {
-		return Command.L == command || Command.R == command;
+	public int getZ() {
+		return z;
+	}
+
+	public void setZ(int z) {
+		this.z = z;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 }
