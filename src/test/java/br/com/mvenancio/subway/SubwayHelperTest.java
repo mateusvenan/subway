@@ -14,7 +14,7 @@ public class SubwayHelperTest {
 		Assert.assertEquals(-2, subway.getZ());
 		Assert.assertEquals(Direction.SOUTH, subway.getDirection());
 	}
-	
+
 	@Test
 	public void getActualPosition() {
 		Subway subway = SubwayHelper.getActualPosition("LMRDDMMUU");
@@ -23,6 +23,105 @@ public class SubwayHelperTest {
 		Assert.assertEquals(2, subway.getY());
 		Assert.assertEquals(0, subway.getZ());
 		Assert.assertEquals(Direction.NORTH, subway.getDirection());
+	}
+
+	@Test
+	public void moveXYWhenDirectionIsNorth() {
+		Subway subway = new Subway();
+
+		SubwayHelper.moveXY(subway);
+		SubwayHelper.moveXY(subway);
+
+		Assert.assertEquals(2, subway.getY());
+		Assert.assertEquals(0, subway.getX());
+	}
+
+	@Test
+	public void moveXYWhenDirectionIsSouth() {
+		Subway subway = new Subway();
+		subway.setDirection(Direction.SOUTH);
+
+		SubwayHelper.moveXY(subway);
+		SubwayHelper.moveXY(subway);
+
+		Assert.assertEquals(-2, subway.getY());
+		Assert.assertEquals(0, subway.getX());
+	}
+
+	@Test
+	public void moveXYWhenDirectionIsEast() {
+		Subway subway = new Subway();
+		subway.setDirection(Direction.EAST);
+
+		SubwayHelper.moveXY(subway);
+		SubwayHelper.moveXY(subway);
+
+		Assert.assertEquals(2, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+	}
+
+	@Test
+	public void moveXYWhenDirectionIsWest() {
+		Subway subway = new Subway();
+		subway.setDirection(Direction.WEST);
+
+		SubwayHelper.moveXY(subway);
+		SubwayHelper.moveXY(subway);
+
+		Assert.assertEquals(-2, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+	}
+
+	@Test
+	public void moveWhenCommandToTurnLeft() {
+		Subway subway = new Subway();
+		Direction initialDirection = subway.getDirection();
+
+		SubwayHelper.move(Command.L, subway);
+
+		Assert.assertEquals(0, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+		Assert.assertEquals(0, subway.getZ());
+		Assert.assertNotEquals(initialDirection, subway.getDirection());
+	}
+
+	@Test
+	public void moveWhenCommandToTurnRight() {
+		Subway subway = new Subway();
+		Direction initialDirection = subway.getDirection();
+
+		SubwayHelper.move(Command.R, subway);
+
+		Assert.assertEquals(0, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+		Assert.assertEquals(0, subway.getZ());
+		Assert.assertNotEquals(initialDirection, subway.getDirection());
+	}
+
+	@Test
+	public void moveWhenCommandIsMoveUp() {
+		Subway subway = new Subway();
+		Direction initialDirection = subway.getDirection();
+
+		SubwayHelper.move(Command.U, subway);
+
+		Assert.assertEquals(0, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+		Assert.assertEquals(1, subway.getZ());
+		Assert.assertEquals(initialDirection, subway.getDirection());
+	}
+
+	@Test
+	public void moveWhenCommandIsMoveDown() {
+		Subway subway = new Subway();
+		Direction initialDirection = subway.getDirection();
+
+		SubwayHelper.move(Command.D, subway);
+
+		Assert.assertEquals(0, subway.getX());
+		Assert.assertEquals(0, subway.getY());
+		Assert.assertEquals(-1, subway.getZ());
+		Assert.assertEquals(initialDirection, subway.getDirection());
 	}
 
 	@Test

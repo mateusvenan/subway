@@ -42,7 +42,7 @@ public class SubwayHelper {
 		}
 	}
 
-	private static void moveXY(Subway subway) {
+	static void moveXY(Subway subway) {
 		switch (subway.getDirection()) {
 		case NORTH:
 			subway.incrementY();
